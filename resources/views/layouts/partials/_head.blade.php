@@ -1,6 +1,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RetroMonsters</title>
+<title>@yield('title')</title>
 <link rel="icon" type="image/png" href="images/favico.png" />
 
 <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@100;400;900&display=swap"
