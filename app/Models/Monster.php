@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Monster extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'pv', 'attack', 'defense', 'rarety_id', 'type_id'];
 
     public function type()
     {

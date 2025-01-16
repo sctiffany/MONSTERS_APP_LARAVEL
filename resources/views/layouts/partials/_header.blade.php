@@ -15,7 +15,8 @@
             <div class="hidden md:flex items-center">
                 <a class="text-gray-300 hover:text-white px-3 py-2 hover:bg-gray-700"
                     href="{{ route('monsters.index') }}">Monstres</a>
-                <a class="text-gray-300 hover:text-white px-3 py-2 hover:bg-gray-700 active" href="#">Ajouter un
+                <a class="text-gray-300 hover:text-white px-3 py-2 hover:bg-gray-700 active"
+                    href="{{ route('monsters.create') }}">Ajouter un
                     monstre</a>
                 <!-- <a
             class="text-gray-300 hover:text-white px-3 py-2 hover:bg-gray-700"
