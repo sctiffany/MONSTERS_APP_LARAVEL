@@ -12,4 +12,10 @@ class MonstersController extends Controller
         $monsters = Monster::all();
         return view('monsters.index', compact('monsters'));
     }
+
+    public function show(int $id)
+    {
+        $monster = Monster::find($id);
+        return view('monsters.show', compact('monster'));
+    }
 }
