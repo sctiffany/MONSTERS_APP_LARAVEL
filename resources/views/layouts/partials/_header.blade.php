@@ -1,7 +1,7 @@
     <header class="bg-gray-900 shadow-lg relative top-8" x-data="{ open: false, loggedIn: true, userMenuOpen: false }">
         <nav class="container mx-auto px-4 py-4 mb-16 flex justify-between items-center">
             <div class="flex items-center">
-                <a href="#">
+                <a href="{{ route('pages.home') }}">
                     <img src="{{ asset('images/Logo_RetroMonsters.png') }}" alt="RetroMonsters Logo"
                         class="h-32 mr-3 absolute" style="top: -28px" />
                 </a>
