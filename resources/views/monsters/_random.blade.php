@@ -1,5 +1,5 @@
 <section class="mb-20">
-    <div class="bg-gray-700 rounded-lg shadow-lg monster-card" data-monster-type="aquatique">
+    <div class="bg-gray-700 rounded-lg shadow-lg monster-card" data-monster-type="{{ Str::lower($monster->type->name) }}">
         <div class="md:flex">
             <!-- Image du monstre -->
             <div class="w-full md:w-1/2 relative">
