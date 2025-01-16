@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('types.index', ['types' => App\Type::all()]);
+    return view('types.index', ['types' => App\Models\Type::all()]);
 });
