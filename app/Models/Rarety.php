@@ -9,4 +9,9 @@ class Rarety extends Model
 {
     use HasFactory;
     protected $table = 'rareties';
+
+    public function monsters()
+    {
+        return $this->hasMany(Monster::class, 'rarety_id');
+    }
 }

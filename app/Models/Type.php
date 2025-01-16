@@ -9,4 +9,9 @@ class Type extends Model
 {
     use HasFactory;
     protected $table = 'monster_types';
+
+    public function monsters()
+    {
+        return $this->hasMany(Monster::class, 'type_id');
+    }
 }
