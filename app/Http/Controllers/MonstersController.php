@@ -78,6 +78,14 @@ class MonstersController extends Controller
         ]);
         Log::info('Validation réussie', ['data' => $data]);
 
+        if ($request->hasFile('image_url')) {
+            $file = $request->file('image_url'); // Obtenir l'image
+            $fileName = time() . '_' . $file->getClientOriginalName(); // Générer un nom unique
+            $file->move(public_path('images'), $fileName); // Déplacer dans public/images
+            $data['image_url'] = $fileName; // Mettre à jour le chemin dans les données
+            Log::info('Fichier uploadé avec succès', ['fileName' => $fileName]);
+        }
+
         $monster->update($data);
         Log::info('Monstre mis à jour avec succès', ['monster' => $monster]);
 
