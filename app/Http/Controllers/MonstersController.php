@@ -64,7 +64,7 @@ class MonstersController extends Controller
 
     public function update(Request $request, Monster $monster)
     {
-        $monster->update($request->validate([
+        $data = $request->validate([
             'name' => 'required|string|max:255',
             'pv' => 'required|integer|min:0',
             'attack' => 'required|integer|min:0',
@@ -73,7 +73,14 @@ class MonstersController extends Controller
             'defense' => 'required|integer|min:0',
             'rarety_id' => 'required|exists:rareties,id',
             'type_id' => 'required|exists:monster_types,id',
-        ]));
+        ]);
+
+        if ($request->has('image_url')) {
+            $data['image_url'] = $request->input('image_url');
+        }
+
+        $monster->update($data);
+
         return redirect()->route('pages.home')->with('status', "Monstre mis à jour avec succès");
     }
 }
