@@ -42,4 +42,10 @@ class MonstersController extends Controller
         Monster::create($data);
         return redirect()->route('pages.home')->with('status', "Monstre ajouté avec succès");
     }
+
+    public function destroy(Monster $monster)
+    {
+        $monster->delete();
+        return redirect()->route('pages.home')->with('status', 'Monstre supprimé avec succès');
+    }
 }

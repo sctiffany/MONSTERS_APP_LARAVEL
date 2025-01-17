@@ -63,7 +63,7 @@
             > -->
                     <a href="monster.html"
                         class="inline-block text-white bg-red-500 hover:bg-red-700 rounded-full px-4 py-2 transition-colors duration-300">Modifier</a>
-                    <a href="monster.html"
+                    <a href="{{ route('monsters.destroy', $monster->id) }}" data-method="delete"
                         class="inline-block text-white opacity-60 hover:opacity-100 rounded-full px-4 py-2 transition-colors duration-300">Supprimer</a>
                 </div>
             </div>
