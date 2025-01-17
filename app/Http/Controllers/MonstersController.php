@@ -13,7 +13,7 @@ class MonstersController extends Controller
     // FONCTIONS DE BASE
     public function index()
     {
-        $monsters = Monster::all();
+        $monsters = Monster::orderBy('created_at', 'desc')->paginate(9);
         return view('monsters.index', compact('monsters'));
     }
 

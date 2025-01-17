@@ -9,8 +9,7 @@
         <h2 class="text-2xl font-bold mb-4 creepster">
             Liste des monstres
         </h2>
-        @include('monsters._index', [
-            'monsters' => App\Models\Monster::orderBy('created_at', 'desc')->take(9)->get(),
-        ])
+        @include('monsters._index', ['monsters' => $monsters])
     </section>
+    {{ $monsters->links() }}
 @endsection
