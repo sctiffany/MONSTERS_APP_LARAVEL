@@ -13,7 +13,7 @@
                         Ajouter un monstre
                     </h2>
 
-                    <form class="space-y-6" method="POST" action="{{ route('monsters.store') }}">
+                    <form class="space-y-6" method="POST" action="{{ route('monsters.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div>
                             <label for="name" class="block mb-1">Nom</label>
@@ -24,6 +24,11 @@
                             <label for="description" class="block mb-1">Description</label>
                             <textarea class="w-full border rounded px-3 py-2 text-gray-700" name="description" id="description"
                                 placeholder="Description"></textarea>
+                        </div>
+                        <div>
+                            <label for="image_url" class="block mb-1">Image du monstre</label>
+                            <input type="file" id="image_url" name="image_url"
+                                class="w-full border rounded px-3 py-2 text-gray-700">
                         </div>
                         <div>
                             <label for="pv" class="block mb-1">Nombre de PV</label>
