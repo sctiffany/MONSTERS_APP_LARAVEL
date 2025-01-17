@@ -37,7 +37,7 @@ class MonstersController extends Controller
             'name' => 'required|string|max:255',
             'pv' => 'required|integer|min:0',
             'attack' => 'required|integer|min:0',
-            'image_url' => 'nullable|string|max:255',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'nullable|string|max:1000',
             'defense' => 'required|integer|min:0',
             'rarety_id' => 'required|exists:rareties,id',
@@ -70,17 +70,13 @@ class MonstersController extends Controller
             'name' => 'required|string|max:255',
             'pv' => 'required|integer|min:0',
             'attack' => 'required|integer|min:0',
-            'image_url' => 'nullable|string|max:255',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'nullable|string|max:1000',
             'defense' => 'required|integer|min:0',
             'rarety_id' => 'required|exists:rareties,id',
             'type_id' => 'required|exists:monster_types,id',
         ]);
         Log::info('Validation réussie', ['data' => $data]);
-
-        if ($request->has('image_url')) {
-            $data['image_url'] = $request->input('image_url');
-        }
 
         $monster->update($data);
         Log::info('Monstre mis à jour avec succès', ['monster' => $monster]);
