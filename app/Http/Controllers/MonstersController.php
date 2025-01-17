@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Monster;
 use App\Models\Rarety;
 use App\Models\Type;
+use Illuminate\Support\Facades\Log;
 
 class MonstersController extends Controller
 {
@@ -64,6 +65,7 @@ class MonstersController extends Controller
 
     public function update(Request $request, Monster $monster)
     {
+        Log::info('Début de la méthode update', ['request' => $request->all()]);
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'pv' => 'required|integer|min:0',
@@ -74,12 +76,14 @@ class MonstersController extends Controller
             'rarety_id' => 'required|exists:rareties,id',
             'type_id' => 'required|exists:monster_types,id',
         ]);
+        Log::info('Validation réussie', ['data' => $data]);
 
         if ($request->has('image_url')) {
             $data['image_url'] = $request->input('image_url');
         }
 
         $monster->update($data);
+        Log::info('Monstre mis à jour avec succès', ['monster' => $monster]);
 
         return redirect()->route('pages.home')->with('status', "Monstre mis à jour avec succès");
     }
