@@ -61,7 +61,7 @@
               class="inline-block text-white bg-red-500 hover:bg-red-700 rounded-full px-4 py-2 transition-colors duration-300"
               >Ajouter à mon deck</a
             > -->
-                    <a href="monster.html"
+                    <a href="{{ route('monsters.edit', $monster->id) }}"
                         class="inline-block text-white bg-red-500 hover:bg-red-700 rounded-full px-4 py-2 transition-colors duration-300">Modifier</a>
                     <form action="{{ route('monsters.destroy', $monster->id) }}" method="POST" class="inline-block">
                         @csrf
