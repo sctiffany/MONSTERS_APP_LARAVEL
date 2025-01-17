@@ -21,6 +21,11 @@
                                 class="w-full border rounded px-3 py-2 text-gray-700" placeholder="Nom du Monstre" />
                         </div>
                         <div>
+                            <label for="description" class="block mb-1">Description</label>
+                            <textarea class="w-full border rounded px-3 py-2 text-gray-700" name="description" id="description"
+                                placeholder="Description"></textarea>
+                        </div>
+                        <div>
                             <label for="pv" class="block mb-1">Nombre de PV</label>
                             <input type="text" id="pv" name="pv"
                                 class="w-full border rounded px-3 py-2 text-gray-700" placeholder="Nombre de PV" />

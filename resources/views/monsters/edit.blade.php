@@ -23,6 +23,11 @@
                                 value="{{ $monster->name }}" />
                         </div>
                         <div>
+                            <label for="description" class="block mb-1">Description</label>
+                            <textarea class="w-full border rounded px-3 py-2 text-gray-700" name="description" id="description"
+                                placeholder="Description">{{ $monster->description }}</textarea>
+                        </div>
+                        <div>
                             <label for="pv" class="block mb-1">Nombre de PV</label>
                             <input type="text" id="pv" name="pv"
                                 class="w-full border rounded px-3 py-2 text-gray-700" placeholder="Nombre de PV"
@@ -64,7 +69,7 @@
                         <div class="flex justify-between items-center">
                             <button type="submit"
                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                Ajouter
+                                Modifier
                             </button>
                             <button type="reset" class="text-red-400 hover:text-red-500">
                                 Annuler
