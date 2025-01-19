@@ -4,7 +4,7 @@
             class="relative bg-gray-700 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 monster-card"
             data-monster-type="{{ Str::lower($monster->type->name) }}">
             <img class="w-full h-48 object-cover rounded-t-lg" src="{{ asset('images/' . $monster->image_url) }}"
-                alt="AbyssalRevenant" />
+                alt="{{ $monster->name }}" />
             <div class="p-4">
                 <h3 class="text-xl font-bold">{{ $monster->name }}</h3>
                 <!-- Pas de données d'utilisateur dans la DB, donc pas dynamique -->
