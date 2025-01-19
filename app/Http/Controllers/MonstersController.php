@@ -48,7 +48,9 @@ class MonstersController extends Controller
             $file = $request->file('image_url'); // Obtenir l'image
             $fileName = time() . '_' . $file->getClientOriginalName(); // Générer un nom unique
             $file->move(public_path('images'), $fileName); // Déplacer dans public/images
-            $data['image_url'] = $fileName; // Mettre à jour le chemin dans les données
+
+            // Stocke seulement le nom du fichier, SANS le préfixe "images/"
+            $data['image_url'] = $fileName;
         }
 
         Monster::create($data);
@@ -87,7 +89,9 @@ class MonstersController extends Controller
             $file = $request->file('image_url'); // Obtenir l'image
             $fileName = time() . '_' . $file->getClientOriginalName(); // Générer un nom unique
             $file->move(public_path('images'), $fileName); // Déplacer dans public/images
-            $data['image_url'] = $fileName; // Mettre à jour le chemin dans les données
+
+            // Stocke seulement le nom du fichier, SANS le préfixe "images/"
+            $data['image_url'] = $fileName;
         }
 
         $monster->update($data);
