@@ -105,7 +105,10 @@ class MonstersController extends Controller
     public function search(Request $request)
     {
         $texte = $request->input('texte');
-        $monsters = Monster::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($texte) . '%'])
+        $monsters = Monster::whereRaw(
+            '(LOWER(name) LIKE ? OR LOWER(description) LIKE ?)',
+            ['%' . strtolower($texte) . '%', '%' . strtolower($texte) . '%']
+        )
             ->orderBy('name', 'asc')
             ->orderBy('id', 'desc')
             ->paginate(9);
