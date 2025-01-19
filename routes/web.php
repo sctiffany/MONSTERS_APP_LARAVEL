@@ -15,6 +15,9 @@ Route::post('/monsters', [MonstersController::class, 'store'])->name('monsters.s
 // DELETE
 Route::delete('/monsters/{monster}', [MonstersController::class, 'destroy'])->name('monsters.destroy');
 
+// RECHERCHE 
+Route::get('/recherche-texte', [MonstersController::class, 'search'])->name('monsters.search');
+
 // ROUTES DE BASE
 Route::get('/monsters', [MonstersController::class, 'index'])->name('monsters.index');
 Route::get('/monsters/{id}/{slug}', [MonstersController::class, 'show'])->name('monsters.show');

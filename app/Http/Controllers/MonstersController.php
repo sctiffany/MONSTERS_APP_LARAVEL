@@ -100,4 +100,12 @@ class MonstersController extends Controller
 
         return redirect()->route('pages.home')->with('status', "Monstre mis à jour avec succès");
     }
+
+    // RECHERCHE
+    public function search(Request $request)
+    {
+        $texte = $request->input('texte');
+        $monsters = Monster::where('name', 'LIKE', '%' . $texte . '%')->orderBy('name', 'asc')->orderBy('id', 'desc')->paginate(9);
+        return view('monsters.index', compact('monsters'));
+    }
 }
