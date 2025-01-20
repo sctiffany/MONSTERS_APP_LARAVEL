@@ -48,12 +48,13 @@ class MonstersController extends Controller
 
         if ($request->hasFile('image_url')) {
             $file = $request->file('image_url'); // Obtenir l'image
-            $fileName = time() . '_' . $file->getClientOriginalName(); // Générer un nom unique
+            $fileName = $file->getClientOriginalName(); // Utiliser le nom original du fichier
             $file->move(public_path('images'), $fileName); // Déplacer dans public/images
 
-            // Stocke seulement le nom du fichier, SANS le préfixe "images/"
+            // Stocke le nom du fichier dans la base de données
             $data['image_url'] = $fileName;
         }
+
 
         Monster::create($data);
         return redirect()->route('pages.home')->with('status', "Monstre ajouté avec succès");
