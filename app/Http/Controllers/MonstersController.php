@@ -47,11 +47,9 @@ class MonstersController extends Controller
         ]);
 
         if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url'); // Obtenir l'image
-            $fileName = $file->getClientOriginalName(); // Utiliser le nom original du fichier
-            $file->move(public_path('images'), $fileName); // Déplacer dans public/images
-
-            // Stocke le nom du fichier dans la base de données
+            $file = $request->file('image_url');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('images'), $fileName);
             $data['image_url'] = $fileName;
         }
 
@@ -89,11 +87,9 @@ class MonstersController extends Controller
         ]);
 
         if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url'); // Obtenir l'image
-            $fileName = $file->getClientOriginalName(); // Utiliser le nom original du fichier
-            $file->move(public_path('images'), $fileName); // Déplacer dans public/images
-
-            // Stocke le nom du fichier dans la base de données
+            $file = $request->file('image_url');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('images'), $fileName);
             $data['image_url'] = $fileName;
         }
 
@@ -128,27 +124,22 @@ class MonstersController extends Controller
 
         $query = Monster::query();
 
-        // Filtrer par type si renseigné
         if ($type) {
             $query->where('type_id', $type);
         }
 
-        // Filtrer par rareté si renseigné
         if ($rarety) {
             $query->where('rarety_id', $rarety);
         }
 
-        // Filtrer par plage de PV
         if ($minPv !== null && $maxPv !== null) {
             $query->whereBetween('pv', [$minPv, $maxPv]);
         }
 
-        // Filtrer par plage d'Attaque en utilisant le nom de colonne correct
         if ($minAttaque !== null && $maxAttaque !== null) {
             $query->whereBetween('attack', [$minAttaque, $maxAttaque]);
         }
 
-        // Ordonner et paginer les résultats
         $monsters = $query->orderBy('name', 'asc')
             ->orderBy('id', 'desc')
             ->paginate(9)
