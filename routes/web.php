@@ -17,6 +17,7 @@ Route::delete('/monsters/{monster}', [MonstersController::class, 'destroy'])->na
 
 // RECHERCHE 
 Route::get('/recherche-texte', [MonstersController::class, 'search'])->name('monsters.search');
+Route::get('/recherche-criteres', [MonstersController::class, 'filter'])->name('monsters.filter');
 
 // ROUTES DE BASE
 Route::get('/monsters', [MonstersController::class, 'index'])->name('monsters.index');

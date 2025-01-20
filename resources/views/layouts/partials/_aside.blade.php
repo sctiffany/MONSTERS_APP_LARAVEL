@@ -10,7 +10,7 @@
     </form>
 
     <!-- Formulaire de Recherche par Critères -->
-    <form action="/recherche-criteres" method="GET" class="bg-gray-700 rounded-lg shadow-lg p-4">
+    <form action="{{ route('monsters.filter') }}" method="GET" class="bg-gray-700 rounded-lg shadow-lg p-4">
         <h2 class="font-bold text-lg mb-4">Filtrer par Critères</h2>
 
         <!-- Type -->

@@ -114,4 +114,44 @@ class MonstersController extends Controller
             ->paginate(9);
         return view('monsters.index', compact('monsters'));
     }
+
+    // FILTER
+    public function filter(Request $request)
+    {
+        $type = $request->input('type_id');
+        $rarety = $request->input('rarety_id');
+        $minPv = $request->input('min_pv', 0);
+        $maxPv = $request->input('max_pv', 200);
+        $minAttaque = $request->input('min_attaque', 0);
+        $maxAttaque = $request->input('max_attaque', 200);
+
+        $query = Monster::query();
+
+        // Filtrer par type si renseigné
+        if ($type) {
+            $query->where('type_id', $type);
+        }
+
+        // Filtrer par rareté si renseigné
+        if ($rarety) {
+            $query->where('rarety_id', $rarety);
+        }
+
+        // Filtrer par plage de PV
+        if ($minPv !== null && $maxPv !== null) {
+            $query->whereBetween('pv', [$minPv, $maxPv]);
+        }
+
+        // Filtrer par plage d'Attaque en utilisant le nom de colonne correct
+        if ($minAttaque !== null && $maxAttaque !== null) {
+            $query->whereBetween('attack', [$minAttaque, $maxAttaque]);
+        }
+
+        // Ordonner et paginer les résultats
+        $monsters = $query->orderBy('name', 'asc')
+            ->orderBy('id', 'desc')
+            ->paginate(9);
+
+        return view('monsters.index', compact('monsters'));
+    }
 }
