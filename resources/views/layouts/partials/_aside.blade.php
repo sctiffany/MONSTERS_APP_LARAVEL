@@ -33,21 +33,23 @@
                 var sliderPvValue = document.getElementById("slider-pv-value");
 
                 noUiSlider.create(sliderPv, {
-                    start: [20, 80], // Valeurs initiales pour min et max PV
+                    start: [0, 200], // Valeurs initiales pour min et max PV
                     connect: true,
                     range: {
                         min: 0,
                         max: 200,
                     },
+                    step: 1
                 });
 
                 sliderPv.noUiSlider.on("update", function(values, handle) {
-                    minPv.value = values[0];
-                    maxPv.value = values[1];
-                    sliderPvValue.innerHTML = "PV: " + values.join(" - ");
+                    minPv.value = Math.round(values[0]);
+                    maxPv.value = Math.round(values[1]);
+                    sliderPvValue.innerHTML = "PV: " + Math.round(values[0]) + " - " + Math.round(values[1]);
                 });
             </script>
         </div>
+
 
         <!-- Attaque -->
         <div class="bg-gray-700 rounded-lg shadow-lg p-4 mb-4">
@@ -60,26 +62,29 @@
                 var sliderAttaque = document.getElementById("slider-attaque");
                 var minAttaque = document.getElementById("min-attaque");
                 var maxAttaque = document.getElementById("max-attaque");
-                var sliderAttaqueValue = document.getElementById(
-                    "slider-attaque-value"
-                );
+                var sliderAttaqueValue = document.getElementById("slider-attaque-value");
 
                 noUiSlider.create(sliderAttaque, {
-                    start: [20, 80], // Valeurs initiales pour min et max Attaque
+                    start: [0, 200], // Valeurs initiales pour min et max Attaque
                     connect: true,
                     range: {
                         min: 0,
                         max: 200,
                     },
+                    step: 1
                 });
 
                 sliderAttaque.noUiSlider.on("update", function(values, handle) {
-                    minAttaque.value = values[0];
-                    maxAttaque.value = values[1];
-                    sliderAttaqueValue.innerHTML = "Attaque: " + values.join(" - ");
+                    // Arrondir les valeurs pour éliminer les décimales
+                    var valeurMin = Math.round(values[0]);
+                    var valeurMax = Math.round(values[1]);
+                    minAttaque.value = valeurMin;
+                    maxAttaque.value = valeurMax;
+                    sliderAttaqueValue.innerHTML = "Attaque: " + valeurMin + " - " + valeurMax;
                 });
             </script>
         </div>
+
 
         <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full">
             Appliquer les filtres
