@@ -150,7 +150,8 @@ class MonstersController extends Controller
         // Ordonner et paginer les résultats
         $monsters = $query->orderBy('name', 'asc')
             ->orderBy('id', 'desc')
-            ->paginate(9);
+            ->paginate(9)
+            ->appends($request->query());
 
         return view('monsters.index', compact('monsters'));
     }
