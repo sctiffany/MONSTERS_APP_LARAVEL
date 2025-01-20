@@ -47,19 +47,11 @@
                         </div>
                         <div>
                             <label for="rarety_id" class="block mb-1">Rareté</label>
-                            <select id="rarety_id" name="rarety_id" class="w-full border rounded px-3 py-2 text-gray-700">
-                                @foreach ($rareties as $rarety)
-                                    <option value="{{ $rarety->id }}">{{ $rarety->name }}</option>
-                                @endforeach
-                            </select>
+                            @include('rareties.index', ['rareties' => App\Models\Rarety::all()])
                         </div>
                         <div>
                             <label for="type_id" class="block mb-1">Type</label>
-                            <select id="type_id" name="type_id" class="w-full border rounded px-3 py-2 text-gray-700">
-                                @foreach ($types as $type)
-                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                @endforeach
-                            </select>
+                            @include('types.index', ['types' => App\Models\Type::all()])
                         </div>
 
 
